@@ -1,0 +1,143 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>sdc.att.app</groupId>
+  <artifactId>sdc_docker_baseline</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0.0</version>
+  <name>sdc_docker_baseline</name>
+  <url>http://maven.apache.org</url>
+
+    <properties>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyy.MM.dd.HH.mm</maven.build.timestamp.format>
+        <docker.tag>${project.version}-${timestamp}</docker.tag>
+        <docker.latest.tag>${project.version}-latest</docker.latest.tag>
+    </properties>
+
+
+  <build>
+    <plugins>
+        <plugin>
+            <groupId>io.fabric8</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>0.15.1</version>
+            <configuration>
+                <images>
+                    <!-- base_sdc-backend  -->
+                    <image>
+                        <name>openecomp/base_sdc-backend</name>
+                        <alias>base_sdc-backend</alias>
+                        <build>
+                            <cleanup>true</cleanup>
+                            <tags>
+                                <tag>${docker.tag}</tag>
+                                <tag>${docker.latest.tag}</tag>
+                            </tags>
+                            <dockerFileDir>${project.basedir}/base_sdc-backend</dockerFileDir>
+                        </build>
+                    </image>
+                    <!-- base_sdc-frontend  -->
+                    <image>
+                        <name>openecomp/base_sdc-frontend</name>
+                        <alias>base_sdc-frontendt</alias>
+                        <build>
+                            <cleanup>true</cleanup>
+                            <tags>
+                                <tag>${docker.tag}</tag>
+                                <tag>${docker.latest.tag}</tag>
+                            </tags>
+                            <dockerFileDir>${project.basedir}/base_sdc-frontend</dockerFileDir>
+                        </build>
+                    </image>
+		            <!-- base_sdc-frontend  -->
+                    <image>
+                        <name>openecomp/base_sdc-kibana</name>
+                        <alias>base_sdc-kibana</alias>
+                        <build>
+                            <cleanup>true</cleanup>
+                            <tags>
+                                <tag>${docker.tag}</tag>
+                                <tag>${docker.latest.tag}</tag>
+                            </tags>
+                            <dockerFileDir>${project.basedir}/base_sdc-kibana</dockerFileDir>
+                        </build>
+                    </image>
+		            <!-- base_sdc-cassandra  -->
+                    <image>
+                        <name>openecomp/base_sdc-cassandra</name>
+                        <alias>base_sdc-cassandra</alias>
+                        <build>
+                            <cleanup>true</cleanup>
+                            <tags>
+                                <tag>${docker.tag}</tag>
+                                <tag>${docker.latest.tag}</tag>
+                            </tags>
+                            <dockerFileDir>${project.basedir}/base_sdc-cassandra</dockerFileDir>
+                        </build>
+                    </image>
+                    <!-- base_sdc-elasticsearch  -->
+                    <image>
+                        <name>openecomp/base_sdc-elasticsearch</name>
+                        <alias>base_sdc-elasticsearch</alias>
+                        <build>
+                            <cleanup>true</cleanup>
+                            <tags>
+                                <tag>${docker.tag}</tag>
+                                <tag>${docker.latest.tag}</tag>
+                            </tags>
+                            <dockerFileDir>${project.basedir}/base_sdc-elasticsearch</dockerFileDir>
+                        </build>
+                    </image>
+                    <!-- base_sdc-sanity  -->
+                    <image>
+                        <name>openecomp/base_sdc-sanity</name>
+                        <alias>base_sdc-sanity</alias>
+                        <build>
+                            <cleanup>true</cleanup>
+                            <tags>
+                                <tag>${docker.tag}</tag>
+                                <tag>${docker.latest.tag}</tag>
+                            </tags>
+                            <dockerFileDir>${project.basedir}/base_sdc-sanity</dockerFileDir>
+                        </build>
+                    </image>
+                </images>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>clean-images</id>
+                    <phase>pre-clean</phase>
+                    <goals>
+                        <goal>remove</goal>
+                    </goals>
+                    <configuration>
+                        <removeAll>true</removeAll>
+                        <image>openecomp/base_sdc-backend,openecomp/base_sdc-frontend,openecomp/base_sdc-elasticsearch,openecomp/base_sdc-kibana,openecomp/base_sdc-sanity</image>
+                    </configuration>
+                </execution>
+
+                <execution>
+                    <id>generate-images</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>build</goal>
+                    </goals>
+                </execution>
+
+                <execution>
+                    <id>push-images</id>
+                    <phase>deploy</phase>
+                    <goals>
+                        <goal>build</goal>
+                        <goal>push</goal>
+                    </goals>
+                    <configuration>
+                        <image>openecomp/base_sdc-backend,openecomp/base_sdc-frontend,openecomp/base_sdc-elasticsearch,openecomp/base_sdc-kibana,openecomp/base_sdc-sanity</image>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+  </build>
+</project>
