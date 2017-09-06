@@ -8,14 +8,18 @@
   <name>sdc_docker_baseline</name>
   <url>http://maven.apache.org</url>
 
-    <properties>
+  <properties>
+        <!--nexus-->
+        <nexus.proxy>https://nexus.onap.org</nexus.proxy>
+        <sitePath>/content/sites/site/org/openecomp/sdc/${project.version}</sitePath>
+        <staging.profile.id>176c31dfe190a</staging.profile.id>
+        <!--maven-->
         <timestamp>${maven.build.timestamp}</timestamp>
         <maven.build.timestamp.format>yyyy.MM.dd.HH.mm</maven.build.timestamp.format>
+        <!--docker-->
         <docker.tag>${project.version}-${timestamp}</docker.tag>
         <docker.latest.tag>${project.version}-latest</docker.latest.tag>
-    </properties>
-
-
+  </properties>
   <build>
     <plugins>
         <plugin>
@@ -140,4 +144,20 @@
         </plugin>
     </plugins>
   </build>
+  <distributionManagement>
+      <repository>
+          <id>ecomp-releases</id>
+          <name>Release Repository</name>
+          <url>${nexus.proxy}/content/repositories/releases/</url>
+      </repository>
+      <snapshotRepository>
+          <id>ecomp-snapshots</id>
+          <name>Snapshot Repository</name>
+          <url>${nexus.proxy}/content/repositories/snapshots/</url>
+      </snapshotRepository>
+      <site>
+          <id>ecomp-site</id>
+          <url>dav:${nexus.proxy}${sitePath}</url>
+      </site>
+  </distributionManagement>
 </project>
