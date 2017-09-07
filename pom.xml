@@ -1,18 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.onap.oparent</groupId>
+    <artifactId>oparent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
   <groupId>sdc.att.app</groupId>
   <artifactId>sdc_docker_baseline</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.0</version>
+  <version>1.0.0-SNAPSHOT</version>
   <name>sdc_docker_baseline</name>
   <url>http://maven.apache.org</url>
 
   <properties>
         <!--nexus-->
-        <nexus.proxy>https://nexus.onap.org</nexus.proxy>
-        <sitePath>/content/sites/site/org/openecomp/sdc/${project.version}</sitePath>
-        <staging.profile.id>176c31dfe190a</staging.profile.id>
+        <sitePath>/content/sites/site/org/openecomp/sdc/${project.artifactId}/${project.version}</sitePath>
         <!--maven-->
         <timestamp>${maven.build.timestamp}</timestamp>
         <maven.build.timestamp.format>yyyy.MM.dd.HH.mm</maven.build.timestamp.format>
@@ -20,8 +24,20 @@
         <docker.tag>${project.version}-${timestamp}</docker.tag>
         <docker.latest.tag>${project.version}-latest</docker.latest.tag>
   </properties>
+
   <build>
     <plugins>
+        <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>1.6.7</version>
+            <extensions>true</extensions>
+            <configuration>
+                <nexusUrl>${onap.nexus.url}</nexusUrl>
+                <stagingProfileId>176c31dfe190a</stagingProfileId>
+                <serverId>ecomp-staging</serverId>
+            </configuration>
+        </plugin>
         <plugin>
             <groupId>io.fabric8</groupId>
             <artifactId>docker-maven-plugin</artifactId>
@@ -145,19 +161,26 @@
     </plugins>
   </build>
   <distributionManagement>
-      <repository>
-          <id>ecomp-releases</id>
-          <name>Release Repository</name>
-          <url>${nexus.proxy}/content/repositories/releases/</url>
-      </repository>
-      <snapshotRepository>
-          <id>ecomp-snapshots</id>
-          <name>Snapshot Repository</name>
-          <url>${nexus.proxy}/content/repositories/snapshots/</url>
-      </snapshotRepository>
       <site>
           <id>ecomp-site</id>
-          <url>dav:${nexus.proxy}${sitePath}</url>
+          <url>dav:${onap.nexus.url}${sitePath}</url>
       </site>
   </distributionManagement>
+  <repositories>
+    <repository>
+        <id>ecomp-releases</id>
+          <name>ECOMP Release Repository</name>
+          <url>${onap.nexus.url}/content/repositories/releases/</url>
+    </repository>
+    <repository>
+          <id>ecomp-snapshots</id>
+          <name>ECOMP Snapshot Repository</name>
+          <url>${onap.nexus.url}/content/repositories/snapshots/</url>
+    </repository>
+    <repository>
+        <id>ecomp-staging</id>
+        <name>ECOMP Staging Repository</name>
+        <url>${onap.nexus.url}/content/repositories/staging/</url>
+    </repository>
+  </repositories>
 </project>
