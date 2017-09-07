@@ -7,11 +7,11 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
 
-  <groupId>org.openecomp.sdc</groupId>
-  <artifactId>sdc_docker_baseline</artifactId>
+  <groupId>org.openecomp.sdc.sdc-docker-baseline</groupId>
+  <artifactId>sdc-docker-baseline</artifactId>
   <packaging>jar</packaging>
   <version>1.0.0-SNAPSHOT</version>
-  <name>sdc_docker_baseline</name>
+  <name>sdc-docker-baseline</name>
   <url>http://maven.apache.org</url>
 
   <properties>
