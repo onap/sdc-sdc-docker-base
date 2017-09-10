@@ -132,7 +132,7 @@
                     </goals>
                     <configuration>
                         <removeAll>true</removeAll>
-                        <image>openecomp/base_sdc-backend,openecomp/base_sdc-frontend,openecomp/base_sdc-elasticsearch,openecomp/base_sdc-kibana,openecomp/base_sdc-sanity</image>
+                        <image>openecomp/base_sdc-backend,openecomp/base_sdc-frontend,openecomp/base_sdc-elasticsearch,openecomp/base_sdc-kibana,openecomp/base_sdc-cassandra,openecomp/base_sdc-sanity</image>
                     </configuration>
                 </execution>
 
@@ -152,7 +152,7 @@
                         <goal>push</goal>
                     </goals>
                     <configuration>
-                        <image>openecomp/base_sdc-backend,openecomp/base_sdc-frontend,openecomp/base_sdc-elasticsearch,openecomp/base_sdc-kibana,openecomp/base_sdc-sanity</image>
+                        <image>openecomp/base_sdc-backend,openecomp/base_sdc-frontend,openecomp/base_sdc-elasticsearch,openecomp/base_sdc-kibana,openecomp/base_sdc-cassandra,openecomp/base_sdc-sanity</image>
                     </configuration>
                 </execution>
             </executions>
