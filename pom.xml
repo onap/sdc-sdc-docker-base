@@ -59,7 +59,7 @@
                     <!-- base_sdc-frontend  -->
                     <image>
                         <name>openecomp/base_sdc-frontend</name>
-                        <alias>base_sdc-frontendt</alias>
+                        <alias>base_sdc-frontend</alias>
                         <build>
                             <cleanup>true</cleanup>
                             <tags>
