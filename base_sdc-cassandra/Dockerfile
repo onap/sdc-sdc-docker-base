@@ -14,7 +14,8 @@ RUN apt-get -y update && apt-get -y install --no-install-recommends \
     curl   \
     vim \
     apt-utils  \
-    openjdk-8-jdk
+    openjdk-8-jdk \
+    python
 
 RUN update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 
