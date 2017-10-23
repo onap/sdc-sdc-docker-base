@@ -24,11 +24,10 @@ RUN apt-get -y update && apt-get -y install \
     gcc \
     python-pip
 
-USER jetty
-
 # install chef-solo
 RUN curl -L https://omnitruck.chef.io/install.sh | bash
 
 RUN pip install pycurl
 
+USER jetty
 

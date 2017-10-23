@@ -16,7 +16,7 @@ RUN apt-get -y update && apt-get -y install \
     curl \
     vim
 
-USER jetty
-
 # install chef-solo
 RUN curl -L https://omnitruck.chef.io/install.sh | bash
+
+USER jetty
