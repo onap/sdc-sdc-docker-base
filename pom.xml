@@ -203,4 +203,21 @@
             </releases>
         </pluginRepository>
     </pluginRepositories>
+    <distributionManagement>
+
+        <repository>
+            <id>ecomp-releases</id>
+            <name>Release Repository</name>
+            <url>https://nexus.onap.org/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>ecomp-snapshots</id>
+            <name>Snapshot Repository</name>
+            <url>https://nexus.onap.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <site>
+            <id>ecomp-site</id>
+            <url>dav:https://nexus.onap.org/content/sites/site/org/openecomp/sdc/${project.version}</url>
+        </site>
+    </distributionManagement>
 </project>
