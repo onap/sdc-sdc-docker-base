@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_aa191324",
+        "filename": "base_sdc-elasticsearch/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 69
+      },
+      "writtenOn": "2017-11-19T21:14:47Z",
+      "side": 1,
+      "message": "this change may couse an issue",
+      "range": {
+        "startLine": 1,
+        "startChar": 5,
+        "endLine": 1,
+        "endChar": 31
+      },
+      "revId": "0a3899fe6aafbdd31744841975c54cbcc9c1ee70",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
