@@ -38,33 +38,20 @@
             <version>0.15.1</version>
             <configuration>
                 <images>
-                    <!-- base_sdc-backend  -->
+                    <!-- base_sdc-jetty  for backend and frontend  -->
                     <image>
-                        <name>openecomp/base_sdc-backend</name>
-                        <alias>base_sdc-backend</alias>
+                        <name>openecomp/base_sdc-jetty</name>
+                        <alias>base_sdc-jetty</alias>
                         <build>
                             <cleanup>true</cleanup>
                             <tags>
                                 <tag>${docker.tag}</tag>
                                 <tag>${docker.latest.tag}</tag>
                             </tags>
-                            <dockerFileDir>${project.basedir}/base_sdc-backend</dockerFileDir>
+                            <dockerFileDir>${project.basedir}/base_sdc-jetty</dockerFileDir>
                         </build>
                     </image>
-                    <!-- base_sdc-frontend  -->
-                    <image>
-                        <name>openecomp/base_sdc-frontend</name>
-                        <alias>base_sdc-frontend</alias>
-                        <build>
-                            <cleanup>true</cleanup>
-                            <tags>
-                                <tag>${docker.tag}</tag>
-                                <tag>${docker.latest.tag}</tag>
-                            </tags>
-                            <dockerFileDir>${project.basedir}/base_sdc-frontend</dockerFileDir>
-                        </build>
-                    </image>
-		            <!-- base_sdc-frontend  -->
+		            <!-- base_sdc-kibana  -->
                     <image>
                         <name>openecomp/base_sdc-kibana</name>
                         <alias>base_sdc-kibana</alias>
@@ -127,7 +114,7 @@
                     </goals>
                     <configuration>
                         <removeAll>true</removeAll>
-                        <image>openecomp/base_sdc-backend,openecomp/base_sdc-frontend,openecomp/base_sdc-elasticsearch,openecomp/base_sdc-kibana,openecomp/base_sdc-cassandra,openecomp/base_sdc-sanity</image>
+                        <image>openecomp/base_sdc-jetty,openecomp/base_sdc-frontend,openecomp/base_sdc-elasticsearch,openecomp/base_sdc-kibana,openecomp/base_sdc-cassandra,openecomp/base_sdc-sanity</image>
                     </configuration>
                 </execution>
 
@@ -143,11 +130,10 @@
                     <id>push-images</id>
                     <phase>deploy</phase>
                     <goals>
-                        <goal>build</goal>
                         <goal>push</goal>
                     </goals>
                     <configuration>
-                        <image>openecomp/base_sdc-backend,openecomp/base_sdc-frontend,openecomp/base_sdc-elasticsearch,openecomp/base_sdc-kibana,openecomp/base_sdc-cassandra,openecomp/base_sdc-sanity</image>
+                        <image>openecomp/base_sdc-jetty,openecomp/base_sdc-frontend,openecomp/base_sdc-elasticsearch,openecomp/base_sdc-kibana,openecomp/base_sdc-cassandra,openecomp/base_sdc-sanity</image>
                     </configuration>
                 </execution>
             </executions>
