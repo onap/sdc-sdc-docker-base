@@ -77,6 +77,19 @@
                             <dockerFileDir>${project.basedir}/base_sdc-cassandra</dockerFileDir>
                         </build>
                     </image>
+                    <!-- base_sdc-cassandra  -->
+                    <image>
+                        <name>onap/base_sdc-cqlsh</name>
+                        <alias>base_sdc-cqlsh</alias>
+                        <build>
+                            <cleanup>true</cleanup>
+                            <tags>
+                                <tag>${docker.tag}</tag>
+                                <tag>${docker.latest.tag}</tag>
+                            </tags>
+                            <dockerFileDir>${project.basedir}/base_sdc-cqlsh</dockerFileDir>
+                        </build>
+                    </image>
                     <!-- base_sdc-elasticsearch  -->
                     <image>
                         <name>onap/base_sdc-elasticsearch</name>
