@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM python:2.7-alpine
 
 ARG HTTP_PROXY
 ARG HTTPS_PROXY
