@@ -11,9 +11,9 @@ RUN if [ ! -z ${HTTPS_PROXY} ]; then echo "Acquire::https::proxy \"${HTTPS_PROXY
 
 # Install packages
 RUN apk add --no-cache \
-libcurl\
-curl\
-jq
+    libcurl  \
+    curl  \
+    jq
 
 # Install packages only needed for building
 RUN apk add --no-cache --virtual .build-dependencies build-base curl-dev
