@@ -10,7 +10,10 @@ RUN if [ ! -z ${HTTP_PROXY} ]; then echo "Acquire::http::proxy  \"${HTTP_PROXY}\
 RUN if [ ! -z ${HTTPS_PROXY} ]; then echo "Acquire::https::proxy \"${HTTPS_PROXY}\";" >> /etc/apt/apt.conf; fi
 
 # Install packages
-RUN apk add --no-cache libcurl curl jq
+RUN apk add --no-cache \
+libcurl\
+curl\
+jq
 
 # Install packages only needed for building
 RUN apk add --no-cache --virtual .build-dependencies build-base curl-dev
