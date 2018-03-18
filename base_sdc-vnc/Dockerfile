@@ -15,3 +15,6 @@ RUN apt-get -y update && apt-get -y install curl
 
 # install chef-solo
 RUN curl -L  https://www.opscode.com/chef/install.sh | bash
+
+# install java
+RUN apt-get -y update && apt-get -y install default-jre
