@@ -30,5 +30,9 @@ RUN set -ex && \
 
 RUN pip install pycurl
 
+COPY set_user.sh /tmp/set_user.sh
+
+RUN sh -x /tmp/set_user.sh && rm -f /tmp/set_user.sh
+
 USER jetty
 
