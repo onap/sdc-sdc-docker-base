@@ -19,4 +19,4 @@ RUN mkdir -p /var/chef/nodes
 # Install Chef
 RUN set -ex && \
     apk add --no-cache bash build-base ruby ruby-dev libffi-dev libxml2-dev && \
-    gem install chef berkshelf io-console --no-document
+    gem install chef:13.8.5 berkshelf io-console --no-document
