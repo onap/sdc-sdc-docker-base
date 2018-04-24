@@ -1,4 +1,4 @@
-FROM consol/ubuntu-xfce-vnc
+FROM consol/ubuntu-xfce-vnc:1.3.0
 
 ARG HTTP_PROXY
 ARG HTTPS_PROXY
