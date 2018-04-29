@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_2e3233a7",
+        "filename": "base_sdc-cassandra/Dockerfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 69
+      },
+      "writtenOn": "2018-04-29T09:40:12Z",
+      "side": 1,
+      "message": "please merge the changes you did with this section because we are doing things twice now",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "bf5caba623fe69384f1faa6fc018463b8145484b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
