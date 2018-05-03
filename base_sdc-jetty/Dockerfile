@@ -1,34 +1,27 @@
 FROM jetty:9.3-jre8-alpine
 
-ARG HTTP_PROXY
-ARG HTTPS_PROXY
-
-ENV HTTP_PROXY  ${HTTP_PROXY}
-ENV HTTPS_PROXY ${HTTPS_PROXY}
-
-RUN if [ ! -z ${HTTP_PROXY} ]; then echo "Acquire::http::proxy  \"${HTTP_PROXY}\";" >> /etc/apt/apt.conf; fi && \
-    if [ ! -z ${HTTPS_PROXY} ]; then echo "Acquire::https::proxy \"${HTTPS_PROXY}\";" >> /etc/apt/apt.conf; fi
-
 USER root
 
-RUN apk add --no-cache \
-    jq \
-    curl \
-    curl-dev \
-    openssl-dev \
-    python \
-    python-dev \
-    py-pip \
-    py-setuptools \
-    vim \
-    && :
 
 # Install Chef
 RUN set -ex && \
-    apk add --no-cache bash build-base ruby ruby-dev libffi-dev libxml2-dev && \
-    gem install chef berkshelf io-console --no-document
-
-RUN pip install pycurl
+    apk add --no-cache \
+        jq=1.5-r5 \
+        curl=7.59.0-r0 \
+        curl-dev=7.59.0-r0 \
+        openssl-dev=1.0.2o-r0 \
+        vim=8.0.1359-r0 \
+        bash=4.4.19-r1 \
+        build-base=0.5-r0 \
+        ruby=2.4.4-r0 \
+        ruby-dev=2.4.4-r0 \
+        libffi-dev=3.2.1-r4 \
+        libxml2-dev=2.9.7-r0 && \
+    gem install \
+        chef:13.8.5 \
+        berkshelf:6.3.1 \
+        io-console:0.4.6 \
+        --no-document
 
 # Replace Jetty user ID
 COPY set_jetty_user.sh /tmp/set_jetty_user.sh

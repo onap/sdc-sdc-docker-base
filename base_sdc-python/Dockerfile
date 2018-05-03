@@ -1,30 +1,14 @@
 FROM python:2.7-alpine
 
-ARG HTTP_PROXY
-ARG HTTPS_PROXY
-
-ENV HTTP_PROXY  ${HTTP_PROXY}
-ENV HTTPS_PROXY ${HTTPS_PROXY}
-
-RUN if [ ! -z ${HTTP_PROXY} ]; then echo "Acquire::http::proxy  \"${HTTP_PROXY}\";" >> /etc/apt/apt.conf; fi
-RUN if [ ! -z ${HTTPS_PROXY} ]; then echo "Acquire::https::proxy \"${HTTPS_PROXY}\";" >> /etc/apt/apt.conf; fi
-
-# Install packages
-RUN apk add --no-cache \
-    libcurl  \
-    curl  \
-    jq
-
 # Install packages only needed for building
-RUN apk add --no-cache --virtual .build-dependencies build-base curl-dev
+RUN  apk add --no-cache libcurl=7.59.0-r0 curl=7.59.0-r0 jq=1.5-r2 && \
+     apk add --no-cache --virtual .build-dependencies build-base=0.4-r1 curl-dev=7.59.0-r0
 
 # Needed for pycurl
 ENV PYCURL_SSL_LIBRARY=openssl
 
-# Pip stuff
-RUN pip install influxdb pycurl requests
-
 # Install Chef
-RUN set -ex && \
-    apk add --no-cache bash build-base ruby ruby-dev libffi-dev libxml2-dev && \
-    gem install chef:13.8.5 berkshelf io-console --no-document
+RUN pip install 'influxdb==5.0.0' 'pycurl== 7.43.0.1' 'requests==2.18.4' &&  \
+    set -ex && \
+    apk add --no-cache bash=4.3.42-r5 ruby=2.3.7-r0 ruby-dev=2.3.7-r0 libffi-dev=3.2.1-r2 libxml2-dev=2.9.5-r0 && \
+    gem install chef:13.8.5 berkshelf:6.3.1 io-console:0.4.6 --no-document

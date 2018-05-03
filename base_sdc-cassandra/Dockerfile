@@ -1,24 +1,14 @@
 FROM cassandra:2.1.17
 
-ARG HTTP_PROXY
-ARG HTTPS_PROXY
-
-ENV HTTP_PROXY  ${HTTP_PROXY}
-ENV HTTPS_PROXY ${HTTPS_PROXY}
-
-RUN if [ ! -z ${HTTP_PROXY} ]; then echo "Acquire::http::proxy  \"${HTTP_PROXY}\";" >> /etc/apt/apt.conf; fi && \
-    if [ ! -z ${HTTPS_PROXY} ]; then echo "Acquire::https::proxy \"${HTTPS_PROXY}\";" >> /etc/apt/apt.conf; fi 
-
-#ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get -y update && apt-get -y install --no-install-recommends \
-    curl   \
-    vim \
-    apt-utils  \
-    openjdk-8-jdk \
-    python
+RUN apt-get -y update && \
+    apt-get -y install --no-install-recommends \
+    curl=7.38.0-4+deb8u10 \
+    vim=2:7.4.488-7+deb8u3 \
+    apt-utils=1.0.9.8.4 \
+    openjdk-8-jdk=8u162-b12-1~bpo8+1 \
+    python=2.7.9-1
 
 RUN update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 
-# install chef-solo
 RUN curl -L https://omnitruck.chef.io/install.sh | bash
 

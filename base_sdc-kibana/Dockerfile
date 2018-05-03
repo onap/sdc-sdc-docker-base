@@ -1,17 +1,8 @@
 FROM kibana:4.3.3
 
-ARG HTTP_PROXY
-ARG HTTPS_PROXY
-
-ENV HTTP_PROXY  ${HTTP_PROXY}
-ENV HTTPS_PROXY ${HTTPS_PROXY}
-
-RUN if [ ! -z ${HTTP_PROXY} ]; then echo "Acquire::http::proxy  \"${HTTP_PROXY}\";" >> /etc/apt/apt.conf; fi && \
-    if [ ! -z ${HTTPS_PROXY} ]; then echo "Acquire::https::proxy \"${HTTPS_PROXY}\";" >> /etc/apt/apt.conf; fi 
-
 RUN apt-get -y update && apt-get -y install \
-    curl \
-    vim
+    curl=7.38.0-4+deb8u10 \
+    vim=2:7.4.488-7+deb8u3
 
 # install chef-solo
 RUN curl -L https://omnitruck.chef.io/install.sh | bash
