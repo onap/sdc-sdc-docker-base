@@ -22,6 +22,30 @@
       "revId": "83fff1911987856cbf6561ce25283653b2976ce6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_90934fa2",
+        "filename": "base_sdc-kibana/Dockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 35
+      },
+      "writtenOn": "2018-05-07T15:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_3247e3bd",
+      "range": {
+        "startLine": 4,
+        "startChar": 4,
+        "endLine": 4,
+        "endChar": 25
+      },
+      "revId": "83fff1911987856cbf6561ce25283653b2976ce6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
