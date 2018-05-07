@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_30bcbb05",
+        "filename": "base_sdc-cassandra/Dockerfile",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 35
+      },
+      "writtenOn": "2018-05-07T16:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_f2141ba1",
+      "range": {
+        "startLine": 4,
+        "startChar": 4,
+        "endLine": 4,
+        "endChar": 15
+      },
+      "revId": "ff3462f489410db916c55d281742695ad89099d9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_1218a7d1",
         "filename": "base_sdc-cassandra/Dockerfile",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-06T17:55:29Z",
       "side": 1,
       "message": "please fix the chossen versions as it can couse issues since the versions get updated and then the build failes.",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "ff3462f489410db916c55d281742695ad89099d9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_50b70721",
+        "filename": "base_sdc-cassandra/Dockerfile",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 35
+      },
+      "writtenOn": "2018-05-07T16:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_1218a7d1",
       "range": {
         "startLine": 57,
         "startChar": 4,
