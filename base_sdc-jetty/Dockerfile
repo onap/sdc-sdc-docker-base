@@ -21,7 +21,10 @@ RUN set -ex && \
         chef:13.8.5 \
         berkshelf:6.3.1 \
         io-console:0.4.6 \
-        --no-document
+        --no-document && \
+    echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
+    apk update && \
+    apk add binutils=2.30-r1 jq=1.6_rc1-r1 libtasn1=4.13-r0
 
 # Replace Jetty user ID
 COPY set_jetty_user.sh /tmp/set_jetty_user.sh

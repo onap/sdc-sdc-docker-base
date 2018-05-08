@@ -11,4 +11,7 @@ ENV PYCURL_SSL_LIBRARY=openssl
 RUN pip install 'influxdb==5.0.0' 'pycurl== 7.43.0.1' 'requests==2.18.4' &&  \
     set -ex && \
     apk add --no-cache bash=4.3.42-r5 ruby=2.3.7-r0 ruby-dev=2.3.7-r0 libffi-dev=3.2.1-r2 libxml2-dev=2.9.5-r0 && \
-    gem install chef:13.8.5 berkshelf:6.3.1 io-console:0.4.6 --no-document
+    gem install chef:13.8.5 berkshelf:6.3.1 io-console:0.4.6 --no-document && \
+    echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
+    apk update && \
+    apk add binutils=2.30-r1 jq=1.6_rc1-r1 libpng=1.6.34-r1
