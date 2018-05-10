@@ -34,7 +34,10 @@ FROM kibana:4.3.3
 # zlib1g
 #   CVE-2016-9843 CVE-2016-9841 CVE-2016-9842 CVE-2016-9840
 
-RUN echo "deb http://deb.debian.org/debian buster main" >> /etc/apt/sources.list && \
+RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list && \
+    echo "deb http://deb.debian.org/debian stretch-updates main" >> /etc/apt/sources.list && \
+    echo "deb http://security.debian.org stretch/updates main" >> /etc/apt/sources.list && \
+    echo "deb http://deb.debian.org/debian buster main" >> /etc/apt/sources.list && \
     echo "deb http://deb.debian.org/debian buster-updates main" >> /etc/apt/sources.list && \
     echo "deb http://security.debian.org buster/updates main" >> /etc/apt/sources.list && \
     apt-get -y update && \
@@ -52,7 +55,7 @@ RUN echo "deb http://deb.debian.org/debian buster main" >> /etc/apt/sources.list
       libgnutls30=3.5.18-1 \
       libgcrypt20=1.8.2-2 \
       libtasn1-6=4.13-2 \
-      libldap-2.4-2=2.4.45+dfsg-1 \
+      libldap-2.4-2=2.4.44+dfsg-5+deb9u1 \
       libpcre3=2:8.39-9 \
       passwd=1:4.5-1 \
       zlib1g=1:1.2.8.dfsg-5 && \
