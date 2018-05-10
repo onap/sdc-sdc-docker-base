@@ -34,7 +34,10 @@ FROM kibana:4.3.3
 # zlib1g
 #   CVE-2016-9843 CVE-2016-9841 CVE-2016-9842 CVE-2016-9840
 
-RUN echo "deb http://deb.debian.org/debian buster main" >> /etc/apt/sources.list && \
+RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list && \
+    echo "deb http://deb.debian.org/debian stretch-updates main" >> /etc/apt/sources.list && \
+    echo "deb http://security.debian.org stretch/updates main" >> /etc/apt/sources.list && \
+    echo "deb http://deb.debian.org/debian buster main" >> /etc/apt/sources.list && \
     echo "deb http://deb.debian.org/debian buster-updates main" >> /etc/apt/sources.list && \
     echo "deb http://security.debian.org buster/updates main" >> /etc/apt/sources.list && \
     apt-get -y update && \
