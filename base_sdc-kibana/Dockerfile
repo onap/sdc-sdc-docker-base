@@ -1,7 +1,7 @@
 FROM kibana:4.3.3
 
 # Upgrade specific system libraries to fix CVE vulnerabilities
-# bash 4.4.18-2
+# bash 4.4.18-2+b1
 #   For CVE-2016-0634 CVE-2016-7543
 # curl 7.58.0-2
 #   For CVE-2016-7167 CVE-2016-7141
@@ -13,7 +13,7 @@ FROM kibana:4.3.3
 #   For CVE-2017-12837 CVE-2017-12883
 # systemd 238-4
 #   For CVE-2017-1000082 CVE-2017-9445 CVE-2017-9217
-# wget 1.19.4-1
+# wget 1.19.5-1
 #   For CVE-2017-13090 CVE-2017-13089 CVE-2016-7098
 # libdb5.3
 #   CVE-2016-3418 CVE-2016-0694 CVE-2016-0692 CVE-2016-0689 CVE-2016-0682
@@ -43,13 +43,13 @@ RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.lis
     apt-get -y update && \
     apt-get -y --no-install-recommends install \
       vim=2:7.4.488-7+deb8u3 vim-common=2:7.4.488-7+deb8u3 vim-runtime=2:7.4.488-7+deb8u3 \
-      bash=4.4.18-2 \
+      bash=4.4.18-2+b1 \
       curl=7.58.0-2 libcurl3=7.58.0-2 \
       krb5-locales=1.16-2 libgssapi-krb5-2=1.16-2 libkrb5-3=1.16-2 libkrb5support0=1.16-2 \
       openssl=1.1.0h-2 \
       perl-base=5.26.2-3 \
       systemd=238-4 \
-      wget=1.19.4-1 \
+      wget=1.19.5-1 \
       libdb5.3=5.3.28-13.1+b1 \
       libc-bin=2.27-3 libc6=2.27-3 multiarch-support=2.27-3 \
       libgnutls30=3.5.18-1 \
