@@ -58,7 +58,7 @@ RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.lis
       libldap-2.4-2=2.4.44+dfsg-5+deb9u1 \
       libpcre3=2:8.39-9 \
       passwd=1:4.5-1 \
-      zlib1g=1:1.2.8.dfsg-5 && \
+      zlib1g=1:1.2.11.dfsg-1 && \
     apt-get -y autoremove
 
 # install chef-solo
