@@ -56,7 +56,7 @@ RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.lis
     apt-get -y --no-install-recommends install \
       vim=2:7.4.488-7+deb8u3 vim-common=2:7.4.488-7+deb8u3 vim-runtime=2:7.4.488-7+deb8u3 \
       apt-utils=1.0.9.8.4 \
-      openjdk-8-jdk=8u162-b12-1~bpo8+1 \
+      openjdk-8-jdk \
       libavahi-client3=0.7-4 libavahi-common-data=0.7-4 libavahi-common3=0.7-4 \
       curl=7.58.0-2 libcurl3=7.58.0-2 \
       krb5-locales=1.16-2 libgssapi-krb5-2=1.16-2 libkrb5-3=1.16-2 libkrb5support0=1.16-2 \
@@ -78,7 +78,8 @@ RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.lis
       libldap-2.4-2=2.4.44+dfsg-5+deb9u1 \
       libpcre3=2:8.39-9 \
       passwd=1:4.5-1 \
-      zlib1g=1:1.2.8.dfsg-5 && \
+      zlib1g=1:1.2.11.dfsg-1 \
+      ntp=1:4.2.8p11+dfsg-1 && \
     apt-get -y autoremove
 
 
