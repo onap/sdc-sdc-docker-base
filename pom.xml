@@ -129,7 +129,7 @@
                             <dockerFileDir>${project.basedir}/base_sdc-sanity</dockerFileDir>
                         </build>
                     </image>
-					 <!-- base_sdc-vnc  -->
+					  <!--base_sdc-vnc-->
                     <image>
                         <name>onap/base_sdc-vnc</name>
                         <alias>base_sdc-vnc</alias>
