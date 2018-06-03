@@ -44,21 +44,21 @@ RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.lis
     apt-get -y --no-install-recommends install \
       vim=2:7.4.488-7+deb8u3 vim-common=2:7.4.488-7+deb8u3 vim-runtime=2:7.4.488-7+deb8u3 \
       bash=4.4.18-2+b1 \
-      curl=7.58.0-2 libcurl3=7.58.0-2 \
+      curl=7.60.0-2 libcurl4=7.60.0-2 \
       krb5-locales=1.16-2 libgssapi-krb5-2=1.16-2 libkrb5-3=1.16-2 libkrb5support0=1.16-2 \
-      openssl=1.1.0h-2 \
-      perl-base=5.26.2-3 \
-      systemd=238-4 \
+      openssl=1.1.0h-4 \
+      perl-base=5.26.2-5 \
+      systemd=238-5 \
       wget=1.19.5-1 \
       libdb5.3=5.3.28-13.1+b1 \
       libc-bin=2.27-3 libc6=2.27-3 multiarch-support=2.27-3 \
       libgnutls30=3.5.18-1 \
       libgcrypt20=1.8.2-2 \
-      libtasn1-6=4.13-2 \
+      libtasn1-6=4.13-3 \
       libldap-2.4-2=2.4.44+dfsg-5+deb9u1 \
       libpcre3=2:8.39-9 \
       passwd=1:4.5-1 \
-      zlib1g=1:1.2.8.dfsg-5 && \
+      zlib1g=1:1.2.11.dfsg-1 && \
     apt-get -y autoremove
 
 # install chef-solo
