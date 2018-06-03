@@ -64,9 +64,9 @@ RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.lis
       libx11-6=2:1.6.5-1 libx11-data=2:1.6.5-1 libx11-xcb1=2:1.6.5-1 \
       libxml2=2.9.4+dfsg1-7 \
       libxtst6=2:1.2.3-1 \
-      perl=5.26.2-5 \
-      python=2.7.15~rc1-1 \
-      libsqlite3-0=3.23.1-1 \
+      perl=5.26.2-6 \
+      python=2.7.15-3 \
+      libsqlite3-0=3.24.0-1 \
       libdb5.3=5.3.28-13.1+b1 \
       libcairo2=1.15.10-3 libcairo-gobject2=1.15.10-3 \
       libc-bin=2.27-3 libc6=2.27-3 multiarch-support=2.27-3 \

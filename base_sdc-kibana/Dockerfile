@@ -43,11 +43,11 @@ RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.lis
     apt-get -y update && \
     apt-get -y --no-install-recommends install \
       vim=2:7.4.488-7+deb8u3 vim-common=2:7.4.488-7+deb8u3 vim-runtime=2:7.4.488-7+deb8u3 \
-      bash=4.4.18-2+b1 \
+      bash=4.4.18-3 \
       curl=7.60.0-2 libcurl4=7.60.0-2 \
       krb5-locales=1.16-2 libgssapi-krb5-2=1.16-2 libkrb5-3=1.16-2 libkrb5support0=1.16-2 \
       openssl=1.1.0h-4 \
-      perl-base=5.26.2-5 \
+      perl-base=5.26.2-6 \
       systemd=238-5 \
       wget=1.19.5-1 \
       libdb5.3=5.3.28-13.1+b1 \
