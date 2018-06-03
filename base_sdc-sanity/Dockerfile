@@ -6,4 +6,4 @@ RUN set -ex && \
     gem install chef:13.8.5 berkshelf:6.3.1 io-console:0.4.6 --no-document && \
     echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
     apk update && \
-    apk add binutils=2.30-r1 curl=7.59.0-r1 libcurl=7.59.0-r1 libtasn1=4.13-r0
+    apk add binutils=2.30-r1 curl=7.60.0-r1 libcurl=7.60.0-r1 libtasn1=4.13-r0
