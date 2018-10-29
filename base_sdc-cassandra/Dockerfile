@@ -54,36 +54,45 @@ RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.lis
     echo "deb http://security.debian.org buster/updates main" >> /etc/apt/sources.list && \
     apt-get -y update && \
     apt-get -y --no-install-recommends install \
-      vim=2:7.4.488-7+deb8u3 vim-common=2:7.4.488-7+deb8u3 vim-runtime=2:7.4.488-7+deb8u3 \
-      apt-utils=1.0.9.8.4 \
+      vim \
+      vim-runtime \
+      apt-utils \
       openjdk-8-jdk \
-      libavahi-client3=0.7-4 libavahi-common-data=0.7-4 libavahi-common3=0.7-4 \
-      curl=7.60.0-2 libcurl4=7.60.0-2 \
-      krb5-locales=1.16-2 libgssapi-krb5-2=1.16-2 libkrb5-3=1.16-2 libkrb5support0=1.16-2 \
-      libtiff5=4.0.9-5 \
-      libx11-6=2:1.6.5-1 libx11-data=2:1.6.5-1 libx11-xcb1=2:1.6.5-1 \
-      libxml2=2.9.4+dfsg1-7 \
-      libxtst6=2:1.2.3-1 \
-      perl=5.26.2-6 \
-      python=2.7.15-3 \
-      libsqlite3-0=3.24.0-1 \
-      libdb5.3=5.3.28-13.1+b1 \
-      libcairo2=1.15.10-3 libcairo-gobject2=1.15.10-3 \
-      libc-bin=2.27-3 libc6=2.27-3 multiarch-support=2.27-3 \
-      libgtk2.0-0=2.24.32-1 libgtk2.0-common=2.24.32-1 \
-      libharfbuzz0b=1.7.6-1+b1 \
-      libgcrypt20=1.8.2-2 \
-      libtasn1-6=4.13-3 \
-      libxi6=2:1.7.9-1 \
-      libldap-2.4-2=2.4.44+dfsg-5+deb9u1 \
-      libpcre3=2:8.39-9 \
-      passwd=1:4.5-1 \
-      zlib1g=1:1.2.11.dfsg-1 \
-      ntp=1:4.2.8p11+dfsg-1 && \
-    apt-get -y autoremove
-
-
-RUN update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
-
-RUN curl -L https://omnitruck.chef.io/install.sh | bash
+      libavahi-client3 \
+      libavahi-common3 \
+      curl \
+      libcurl4 \
+      krb5-locales \
+      libgssapi-krb5-2 \
+      libkrb5-3 \
+      libkrb5support0 \
+      libtiff5 \
+      libx11-6 \
+      libx11-data \
+      libx11-xcb1 \
+      libxml2 \
+      libxtst6 \
+      perl \
+      python \
+      libsqlite3-0 \
+      libdb5.3 \
+      libcairo2 \
+      libcairo-gobject2 \
+      libc-bin \
+      libc6 \
+      multiarch-support \
+      libgtk2.0-0 \
+      libgtk2.0-common \
+      libharfbuzz0b \
+      libgcrypt20 \
+      libtasn1-6 \
+      libxi6 \
+      libldap-2.4-2 \
+      libpcre3 \
+      passwd \
+      zlib1g \
+      ntp && \
+    apt-get -y autoremove && \
+    update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java && \
+    curl -L https://omnitruck.chef.io/install.sh | bash
 
