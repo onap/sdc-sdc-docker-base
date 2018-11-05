@@ -5,7 +5,7 @@
   <groupId>org.onap.sdc.sdc-docker-base</groupId>
   <artifactId>sdc-docker-base</artifactId>
   <packaging>pom</packaging>
-  <version>1.4.1-SNAPSHOT</version>
+  <version>1.4.2-SNAPSHOT</version>
   <name>sdc-sdc-docker-base</name>
 
   <properties>
