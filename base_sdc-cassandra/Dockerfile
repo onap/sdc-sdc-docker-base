@@ -1,4 +1,4 @@
-FROM cassandra:2.1.17
+FROM cassandra:2.1
 
 # Upgrade specific system libraries to fix CVE vulnerabilities
 # avahi 0.7-3.1
@@ -52,7 +52,7 @@ RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.lis
     echo "deb http://deb.debian.org/debian buster main" >> /etc/apt/sources.list && \
     echo "deb http://deb.debian.org/debian buster-updates main" >> /etc/apt/sources.list && \
     echo "deb http://security.debian.org buster/updates main" >> /etc/apt/sources.list && \
-    apt-get -y update && \
+    apt-get update && \
     apt-get -y --no-install-recommends install \
       vim \
       vim-runtime \
@@ -92,7 +92,9 @@ RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.lis
       passwd \
       zlib1g \
       ntp && \
-    apt-get -y autoremove && \
-    update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java && \
-    curl -L https://omnitruck.chef.io/install.sh | bash
+    apt-get -y autoremove
+RUN update-alternatives --set java /usr/lib/jvm/java-8-openjdk-*/jre/bin/java
+
+#Not arm compatible (probably have to do "gem install ..." if chef is really needed here)
+#RUN curl -L https://omnitruck.chef.io/install.sh | bash
 
