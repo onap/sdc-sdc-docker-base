@@ -1,19 +1,78 @@
-FROM elasticsearch:2.4.6-alpine
+FROM openjdk:8-jre-alpine
 
-RUN mkdir -p /var/chef/nodes
+# ensure elasticsearch user exists
+RUN addgroup -S elasticsearch && adduser -S -G elasticsearch elasticsearch
 
-# Install Chef
-RUN set -ex && \
-    apk add --no-cache \
-        curl \
-        vim \
-        bash \
-        build-base \
-        ruby=2.5.2-r0 \
-        ruby-dev \
-        libffi-dev \
-        libxml2-dev && \
-    gem install chef:13.8.5 berkshelf:6.3.1 io-console:0.4.6 etc webrick --no-document && \
-    echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
-    apk update && \
-    apk add binutils curl libcurl libtasn1
+# grab su-exec for easy step-down from root
+# and bash for "bin/elasticsearch" among others
+RUN apk add --no-cache 'su-exec>=0.2' bash
+
+# https://artifacts.elastic.co/GPG-KEY-elasticsearch
+ENV GPG_KEY 46095ACC8548582C1A2699A9D27D666CD88E42B4
+
+WORKDIR /usr/share/elasticsearch
+ENV PATH /usr/share/elasticsearch/bin:$PATH
+
+ENV ELASTICSEARCH_VERSION 2.4.6
+ENV ELASTICSEARCH_TARBALL="https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ELASTICSEARCH_VERSION}/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz" 
+#	ELASTICSEARCH_TARBALL_ASC="${ELASTICSEARCH_TARBALL}.asc" \
+ENV	ELASTICSEARCH_TARBALL_SHA1="$(curl https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ELASTICSEARCH_VERSION}/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz.sha1)"
+
+RUN set -ex; \
+	\
+	apk add --no-cache --virtual .fetch-deps \
+		ca-certificates \
+		gnupg \
+		openssl \
+		tar \
+	; 
+
+RUN	wget -O elasticsearch.tar.gz "$ELASTICSEARCH_TARBALL"; \
+	\
+	if [ "$ELASTICSEARCH_TARBALL_SHA1" ]; then \
+		echo "$ELASTICSEARCH_TARBALL_SHA1 *elasticsearch.tar.gz" | sha1sum -c -; \
+	fi; \
+	\
+	if [ "$ELASTICSEARCH_TARBALL_ASC" ]; then \
+		wget -O elasticsearch.tar.gz.asc "$ELASTICSEARCH_TARBALL_ASC"; \
+		export GNUPGHOME="$(mktemp -d)"; \
+		gpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPG_KEY"; \
+		gpg --batch --verify elasticsearch.tar.gz.asc elasticsearch.tar.gz; \
+		rm -rf "$GNUPGHOME" elasticsearch.tar.gz.asc; \
+	fi; \
+	\
+	tar -xf elasticsearch.tar.gz --strip-components=1; \
+	rm elasticsearch.tar.gz; \
+	\
+	apk del .fetch-deps; \
+	\
+	mkdir -p ./plugins; \
+	for path in \
+		./data \
+		./logs \
+		./config \
+		./config/scripts \
+	; do \
+		mkdir -p "$path"; \
+		chown -R elasticsearch:elasticsearch "$path"; \
+	done; \
+	\
+# we shouldn't need much RAM to test --version (default is 2gb, which gets Jenkins in trouble sometimes)
+	export ES_JAVA_OPTS='-Xms32m -Xmx32m'; \
+	if [ "${ELASTICSEARCH_VERSION%%.*}" -gt 1 ]; then \
+		elasticsearch --version; \
+	else \
+# elasticsearch 1.x doesn't support --version
+# but in 5.x, "-v" is verbose (and "-V" is --version)
+		elasticsearch -v; \
+	fi
+
+COPY config ./config
+
+VOLUME /usr/share/elasticsearch/data
+
+COPY docker-entrypoint.sh /
+
+EXPOSE 9200 9300
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["elasticsearch"]
