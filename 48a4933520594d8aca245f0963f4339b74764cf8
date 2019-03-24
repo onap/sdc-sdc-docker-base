@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b6f4f0f_c02f7c16",
+        "filename": "base_sdc-cqlsh/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 133
+      },
+      "writtenOn": "2019-03-24T15:22:03Z",
+      "side": 0,
+      "message": "All this is indeed not needed for your task?",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "48a4933520594d8aca245f0963f4339b74764cf8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}

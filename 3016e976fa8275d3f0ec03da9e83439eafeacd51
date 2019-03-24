@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76878734_d8ecad97",
+        "filename": "base_sdc-cassandra/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 133
+      },
+      "writtenOn": "2019-03-24T15:22:03Z",
+      "side": 1,
+      "message": "Why? will this not block the run if \u0027y\u0027 is missing?",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "3016e976fa8275d3f0ec03da9e83439eafeacd51",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "639a928b_8555e5d9",
+        "filename": "base_sdc-cassandra/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 133
+      },
+      "writtenOn": "2019-03-24T15:22:03Z",
+      "side": 1,
+      "message": "Why as a remark? did you test this flow?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 4
+      },
+      "revId": "3016e976fa8275d3f0ec03da9e83439eafeacd51",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6b2400e_deb4742e",
+        "filename": "base_sdc-jetty/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 133
+      },
+      "writtenOn": "2019-03-24T15:22:03Z",
+      "side": 1,
+      "message": "What is this for?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "3016e976fa8275d3f0ec03da9e83439eafeacd51",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbcd5d0f_ef494cdb",
+        "filename": "docker-entrypoint.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 133
+      },
+      "writtenOn": "2019-03-24T15:22:03Z",
+      "side": 1,
+      "message": "How is this file relevant for cpu/os type?",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 6
+      },
+      "revId": "3016e976fa8275d3f0ec03da9e83439eafeacd51",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
