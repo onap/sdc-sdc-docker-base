@@ -22,6 +22,30 @@
       "revId": "48a4933520594d8aca245f0963f4339b74764cf8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34afe6bf_96d30796",
+        "filename": "base_sdc-cqlsh/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2019-03-27T17:35:25Z",
+      "side": 0,
+      "message": "Using the edge branch seems inappropriate for a stable environment as it\u0027s for package testing and development",
+      "parentUuid": "0b6f4f0f_c02f7c16",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "48a4933520594d8aca245f0963f4339b74764cf8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
