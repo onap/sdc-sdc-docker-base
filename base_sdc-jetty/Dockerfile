@@ -2,19 +2,19 @@ FROM jetty:9.4-jre8-alpine
 
 USER root
 
-
 # Install Chef
 RUN set -ex && \
+    echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
     apk update && \
     apk add --no-cache \
         jq \
         curl \
         curl-dev \
         libressl-dev \
-        vim=8.1.0115-r0 \
+        vim \
         bash \
         build-base \
-        ruby=2.5.2-r0 \
+        ruby=2.5.5-r0 \
         ruby-dev \
         libffi-dev \
         libxml2-dev && \
@@ -24,7 +24,6 @@ RUN set -ex && \
         io-console:0.4.6 \
         etc webrick \
         --no-document && \
-    echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
     apk update && \
     apk add binutils jq libtasn1
 

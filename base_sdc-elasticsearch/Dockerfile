@@ -9,7 +9,7 @@ RUN set -ex && \
         vim \
         bash \
         build-base \
-        ruby=2.5.2-r0 \
+        ruby=2.5.5-r0 \
         ruby-dev \
         libffi-dev \
         libxml2-dev && \

@@ -34,13 +34,16 @@ FROM kibana:4.3.3
 # zlib1g
 #   CVE-2016-9843 CVE-2016-9841 CVE-2016-9842 CVE-2016-9840
 
-RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list && \
+RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list && \
+    sed -i '/deb http:\/\/deb.debian.org\/debian jessie-backports main/d' /etc/apt/sources.list && \
+    echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && \
+    echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list && \
     echo "deb http://deb.debian.org/debian stretch-updates main" >> /etc/apt/sources.list && \
     echo "deb http://security.debian.org stretch/updates main" >> /etc/apt/sources.list && \
     echo "deb http://deb.debian.org/debian buster main" >> /etc/apt/sources.list && \
     echo "deb http://deb.debian.org/debian buster-updates main" >> /etc/apt/sources.list && \
     echo "deb http://security.debian.org buster/updates main" >> /etc/apt/sources.list && \
-    apt-get -y update && \
+    apt-get -o Acquire::Check-Valid-Until=false update && \
     apt-get -y --no-install-recommends install \
       vim \
       vim-common \
@@ -65,4 +68,4 @@ RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.lis
       passwd \
       zlib1g && \
     apt-get -y autoremove && \
-    curl -L https://omnitruck.chef.io/install.sh | bash
+    curl -L https://omnitruck.chef.io/install.sh | bash -s -- -v 13.8.5
