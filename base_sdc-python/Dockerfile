@@ -4,7 +4,8 @@ FROM python:2.7-alpine
 ENV PYCURL_SSL_LIBRARY=openssl
 
 # Install packages only needed for building
-RUN apk update && \
+RUN echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
+    apk update && \
     apk add binutils jq libpng && \
     apk add --no-cache \
         libcurl \
@@ -12,7 +13,7 @@ RUN apk update && \
         jq \
         libressl-dev \
         bash \
-        ruby=2.5.2-r0 \
+        ruby=2.5.5-r0 \
         ruby-dev \
         libffi-dev \
         libxml2-dev && \
@@ -26,8 +27,8 @@ RUN apk update && \
         berkshelf:6.3.1 \
         io-console:0.4.6 \
         etc webrick \
-        --no-document && \
-    echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
+        --no-document
+
 
 
 
