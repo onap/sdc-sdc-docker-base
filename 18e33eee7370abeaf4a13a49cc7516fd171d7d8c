@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eecbda44_09018140",
+        "filename": "base_sdc-cassandra/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 3663
+      },
+      "writtenOn": "2019-06-19T07:47:01Z",
+      "side": 1,
+      "message": "Jre is enough for installation and running of cassandra. Also any graphical-interfaces/display libarary are not needed in this case so the headless type of the java is correct choice. Version of the jre remains the same. I test it on local env and cassandra works fine, but if You have any information about necessity of jdk in case of any cassandra usecase please give me know.",
+      "parentUuid": "e65b68a9_6162b524",
+      "revId": "18e33eee7370abeaf4a13a49cc7516fd171d7d8c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f21b59bf_075c1ea1",
         "filename": "base_sdc-elasticsearch/Dockerfile",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2019-06-17T14:06:29Z",
       "side": 1,
       "message": "Please explain its needed",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "18e33eee7370abeaf4a13a49cc7516fd171d7d8c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ed751c7_47556ad4",
+        "filename": "base_sdc-elasticsearch/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3663
+      },
+      "writtenOn": "2019-06-19T07:47:01Z",
+      "side": 1,
+      "message": "It was added testing different versions of ruby and chef according to a gem dependency conflict. Honestly I am trying to find scenario which throws the error but I am not able to at the moment. I will double check to build the image without public_suffix and if will be ok I will remove it or provide more info. Will back to this comment in next 1 hour.",
+      "parentUuid": "f21b59bf_075c1ea1",
       "range": {
         "startLine": 16,
         "startChar": 16,
