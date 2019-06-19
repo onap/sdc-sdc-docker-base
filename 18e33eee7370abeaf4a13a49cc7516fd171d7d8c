@@ -81,6 +81,30 @@
       "revId": "18e33eee7370abeaf4a13a49cc7516fd171d7d8c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc4c3468_577f8c28",
+        "filename": "base_sdc-elasticsearch/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3663
+      },
+      "writtenOn": "2019-06-19T09:22:32Z",
+      "side": 1,
+      "message": "Rechecked and removed explicit declaration of public_suffix version (currently version 3.1.0 is being installed).",
+      "parentUuid": "8ed751c7_47556ad4",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "18e33eee7370abeaf4a13a49cc7516fd171d7d8c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
