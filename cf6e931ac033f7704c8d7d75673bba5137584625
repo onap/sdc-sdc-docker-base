@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b43673f0_47d5510d",
+        "filename": "base_sdc-jetty/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1937
+      },
+      "writtenOn": "2019-06-23T14:55:27Z",
+      "side": 1,
+      "message": "This split creates additional docker layers and a bigger image\nWe have to keep the baseline as slim as possible",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "cf6e931ac033f7704c8d7d75673bba5137584625",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
