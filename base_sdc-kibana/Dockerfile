@@ -34,6 +34,8 @@ FROM kibana:4.3.3
 # zlib1g
 #   CVE-2016-9843 CVE-2016-9841 CVE-2016-9842 CVE-2016-9840
 
+USER root
+
 RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list && \
     sed -i '/deb http:\/\/deb.debian.org\/debian jessie-backports main/d' /etc/apt/sources.list && \
     echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && \
@@ -43,6 +45,18 @@ RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt
     echo "deb http://deb.debian.org/debian buster main" >> /etc/apt/sources.list && \
     echo "deb http://deb.debian.org/debian buster-updates main" >> /etc/apt/sources.list && \
     echo "deb http://security.debian.org buster/updates main" >> /etc/apt/sources.list && \
+    apt-get clean && \
+    wget -q https://dl-ssl.google.com/linux/linux_signing_key.pub -O- | apt-key add - && \
+    gpg --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50 && \
+    gpg --export AA8E81B4331F7F50 | apt-key add - && \
+    gpg --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC && \
+    gpg --export 04EE7237B7D453EC | apt-key add - && \
+    gpg --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A && \
+    gpg --export 112695A0E562B32A | apt-key add - && \
+    gpg --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138 && \
+    gpg --export 648ACFD622F3D138 | apt-key add - && \
+    gpg --keyserver keyserver.ubuntu.com --recv-keys EF0F382A1A7B6500 && \
+    gpg --export EF0F382A1A7B6500 | apt-key add - && \
     apt-get -o Acquire::Check-Valid-Until=false update && \
     apt-get -y --no-install-recommends install \
       vim \
