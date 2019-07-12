@@ -22,17 +22,6 @@
   <build>
     <plugins>
         <plugin>
-            <groupId>org.sonatype.plugins</groupId>
-            <artifactId>nexus-staging-maven-plugin</artifactId>
-            <version>1.6.7</version>
-            <extensions>true</extensions>
-            <configuration>
-                <nexusUrl>https://nexus.onap.org</nexusUrl>
-                <stagingProfileId>176c31dfe190a</stagingProfileId>
-                <serverId>ecomp-staging</serverId>
-            </configuration>
-        </plugin>
-        <plugin>
             <groupId>io.fabric8</groupId>
             <artifactId>docker-maven-plugin</artifactId>
             <version>0.25.2</version>
