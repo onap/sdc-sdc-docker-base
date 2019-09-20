@@ -4,8 +4,7 @@ FROM python:2.7-alpine
 ENV PYCURL_SSL_LIBRARY=openssl
 
 # Install packages only needed for building
-RUN echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
-    apk update && \
+RUN apk update && \
     apk add binutils jq libpng && \
     apk add --no-cache \
         libcurl \

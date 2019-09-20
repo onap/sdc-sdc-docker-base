@@ -4,7 +4,6 @@ USER root
 
 # Install Chef
 RUN set -ex && \
-    echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
     apk update && \
     apk add --no-cache \
         jq \

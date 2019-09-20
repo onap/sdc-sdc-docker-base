@@ -1,7 +1,6 @@
 FROM openjdk:8-jdk-alpine
 
 RUN apk add --no-cache py-pip && \
-    echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
     pip install cqlsh==4.0.1 && \
     set -ex && \
     pip install cqlsh && \

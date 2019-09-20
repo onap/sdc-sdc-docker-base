@@ -5,6 +5,7 @@ RUN mkdir -p /var/chef/nodes
 # Install Chef
 RUN set -ex && \
     apk add --no-cache \
+        linux-headers \
         curl \
         vim \
         bash \
