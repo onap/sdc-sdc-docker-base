@@ -2,7 +2,6 @@ FROM openjdk:8-jdk-alpine
 
 # Install Chef
 RUN set -ex && \
-    echo "http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
     apk add --no-cache \
     curl \
     vim \
