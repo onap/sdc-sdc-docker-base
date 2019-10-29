@@ -1,7 +1,9 @@
 FROM openjdk:8-jdk-alpine
 
 RUN apk add --no-cache py-pip && \
-    pip install cqlsh==4.0.1 && \
+    pip install cqlsh==5.0.4 && \
+    mkdir ~/.cassandra/ && \
+    echo  '[cql]\n version=3.4.4' >> ~/.cassandra/cqlshrc  && \
     set -ex && \
     pip install cqlsh && \
     apk add --no-cache \
@@ -15,3 +17,4 @@ RUN apk add --no-cache py-pip && \
     apk update && \
     apk add binutils \
     libtasn1
+
