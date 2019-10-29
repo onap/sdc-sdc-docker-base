@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3991bb21_d6dd753f",
+        "filename": "pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5562
+      },
+      "writtenOn": "2019-10-29T16:38:13Z",
+      "side": 1,
+      "message": "any particular reason for select this version (May, 2018), latest one is \"0.31.0\" (Aug, 2019)?",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "e6586d0ac8ce5c05ead17ca4fa39d1ac685a9e3b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
