@@ -1,4 +1,4 @@
-FROM cassandra:2.1.17
+FROM cassandra:3.11.4
 
 # Upgrade specific system libraries to fix CVE vulnerabilities
 # avahi 0.7-3.1
