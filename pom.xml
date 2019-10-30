@@ -31,7 +31,7 @@
       <plugin>
         <groupId>io.fabric8</groupId>
         <artifactId>docker-maven-plugin</artifactId>
-        <version>0.26.0</version>
+        <version>0.31.0</version>
         <configuration>
           <images>
             <!-- base_sdc-jetty  for backend and frontend  -->
@@ -47,19 +47,7 @@
                 <dockerFileDir>${project.basedir}/base_sdc-jetty</dockerFileDir>
               </build>
             </image>
-            <!--base_sdc-kibana-->
-            <image>
-              <name>onap/base_sdc-kibana</name>
-              <alias>base_sdc-kibana</alias>
-              <build>
-                <cleanup>true</cleanup>
-                <tags>
-                  <tag>${docker.tag}</tag>
-                  <tag>${docker.latest.tag}</tag>
-                </tags>
-                <dockerFileDir>${project.basedir}/base_sdc-kibana</dockerFileDir>
-              </build>
-            </image>
+
             <!--base_sdc-cassandra-->
             <image>
               <name>onap/base_sdc-cassandra</name>
@@ -150,7 +138,7 @@
             <configuration>
               <removeAll>true</removeAll>
               <image>
-                onap/base_sdc-jetty,onap/base_sdc-elasticsearch,onap/base_sdc-kibana,onap/base_sdc-cassandra,onap/base_sdc-sanity,onap/base_sdc-cqlsh,onap/base_sdc-python,onap/base_sdc-vnc
+                onap/base_sdc-jetty,onap/base_sdc-elasticsearch,onap/base_sdc-cassandra,onap/base_sdc-sanity,onap/base_sdc-cqlsh,onap/base_sdc-python,onap/base_sdc-vnc
               </image>
             </configuration>
           </execution>

@@ -47,7 +47,6 @@ FROM cassandra:3.11.4
 #   CVE-2016-9843 CVE-2016-9841 CVE-2016-9842 CVE-2016-9840
 
 RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list && \
-    sed -i '/deb http:\/\/deb.debian.org\/debian jessie-backports main/d' /etc/apt/sources.list.d/backports.list && \
     echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && \
     echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list && \
     echo "deb http://deb.debian.org/debian stretch-updates main" >> /etc/apt/sources.list && \

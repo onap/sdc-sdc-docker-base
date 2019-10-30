@@ -9,7 +9,7 @@ RUN apk add --no-cache py-pip && \
     apk add --no-cache \
     bash \
     build-base \
-    ruby=2.5.5-r0 \
+    ruby=2.5.7-r0 \
     ruby-dev \
     libffi-dev \
     libxml2-dev && \
