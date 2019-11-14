@@ -3,7 +3,8 @@ FROM openjdk:8-jdk-alpine
 RUN apk add --no-cache py-pip && \
     pip install cqlsh==5.0.4 && \
     mkdir ~/.cassandra/ && \
-    echo  '[cql]\n version=3.4.4' >> ~/.cassandra/cqlshrc  && \
+    echo  '[cql]' > ~/.cassandra/cqlshrc  && \
+    echo  'version=3.4.4' >> ~/.cassandra/cqlshrc  && \
     set -ex && \
     pip install cqlsh && \
     apk add --no-cache \
