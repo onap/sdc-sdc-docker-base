@@ -1,4 +1,4 @@
-FROM jetty:9.4-jre8-alpine
+FROM jetty:9.4.18-jre8-alpine
 
 USER root
 
