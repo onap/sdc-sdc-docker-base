@@ -1,0 +1,8 @@
+Code-Review+1: Oren  Kleks <oren.kleks@amdocs.com>
+Code-Review+2: Ofir Sonsino <ofir.sonsino@intl.att.com>
+Verified+1: Ofir Sonsino <ofir.sonsino@intl.att.com>
+Submitted-by: Ofir Sonsino <ofir.sonsino@intl.att.com>
+Submitted-at: Tue, 18 Feb 2020 13:43:05 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/sdc/sdc-docker-base/+/101530
+Project: sdc/sdc-docker-base
+Branch: refs/heads/master
