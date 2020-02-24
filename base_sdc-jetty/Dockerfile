@@ -28,6 +28,6 @@ RUN set -ex && \
 
 # Replace Jetty user ID
 COPY set_jetty_user.sh /tmp/set_jetty_user.sh
-RUN sh -x /tmp/set_jetty_user.sh && rm -f /tmp/set_jetty_user.sh && chown -R jetty:jetty ${JETTY_BASE}/webapps /var/lib/jetty
+#RUN sh -x /tmp/set_jetty_user.sh && rm -f /tmp/set_jetty_user.sh && chown -R jetty:jetty ${JETTY_BASE}/webapps /var/lib/jetty
 
 USER jetty

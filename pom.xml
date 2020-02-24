@@ -35,18 +35,18 @@
         <configuration>
           <images>
             <!-- base_sdc-jetty  for backend and frontend  -->
-            <image>
-              <name>onap/base_sdc-jetty</name>
-              <alias>base_sdc-jetty</alias>
-              <build>
-                <cleanup>true</cleanup>
-                <tags>
-                  <tag>${docker.tag}</tag>
-                  <tag>${docker.latest.tag}</tag>
-                </tags>
-                <dockerFileDir>${project.basedir}/base_sdc-jetty</dockerFileDir>
-              </build>
-            </image>
+<!--            <image>-->
+<!--              <name>onap/base_sdc-jetty</name>-->
+<!--              <alias>base_sdc-jetty</alias>-->
+<!--              <build>-->
+<!--                <cleanup>true</cleanup>-->
+<!--                <tags>-->
+<!--                  <tag>${docker.tag}</tag>-->
+<!--                  <tag>${docker.latest.tag}</tag>-->
+<!--                </tags>-->
+<!--                <dockerFileDir>${project.basedir}/base_sdc-jetty</dockerFileDir>-->
+<!--              </build>-->
+<!--            </image>-->
 
             <!--base_sdc-cassandra-->
             <image>
@@ -62,70 +62,70 @@
               </build>
             </image>
             <!-- base_sdc-cqlsh -->
-            <image>
-              <name>onap/base_sdc-cqlsh</name>
-              <alias>base_sdc-cqlsh</alias>
-              <build>
-                <cleanup>true</cleanup>
-                <tags>
-                  <tag>${docker.tag}</tag>
-                  <tag>${docker.latest.tag}</tag>
-                </tags>
-                <dockerFileDir>${project.basedir}/base_sdc-cqlsh</dockerFileDir>
-              </build>
-            </image>
+<!--            <image>-->
+<!--              <name>onap/base_sdc-cqlsh</name>-->
+<!--              <alias>base_sdc-cqlsh</alias>-->
+<!--              <build>-->
+<!--                <cleanup>true</cleanup>-->
+<!--                <tags>-->
+<!--                  <tag>${docker.tag}</tag>-->
+<!--                  <tag>${docker.latest.tag}</tag>-->
+<!--                </tags>-->
+<!--                <dockerFileDir>${project.basedir}/base_sdc-cqlsh</dockerFileDir>-->
+<!--              </build>-->
+<!--            </image>-->
             <!--base_sdc-python-->
-            <image>
-              <name>onap/base_sdc-python</name>
-              <alias>base_sdc-python</alias>
-              <build>
-                <cleanup>true</cleanup>
-                <tags>
-                  <tag>${docker.tag}</tag>
-                  <tag>${docker.latest.tag}</tag>
-                </tags>
-                <dockerFileDir>${project.basedir}/base_sdc-python</dockerFileDir>
-              </build>
-            </image>
+<!--            <image>-->
+<!--              <name>onap/base_sdc-python</name>-->
+<!--              <alias>base_sdc-python</alias>-->
+<!--              <build>-->
+<!--                <cleanup>true</cleanup>-->
+<!--                <tags>-->
+<!--                  <tag>${docker.tag}</tag>-->
+<!--                  <tag>${docker.latest.tag}</tag>-->
+<!--                </tags>-->
+<!--                <dockerFileDir>${project.basedir}/base_sdc-python</dockerFileDir>-->
+<!--              </build>-->
+<!--            </image>-->
             <!--base_sdc-elasticsearch-->
-            <image>
-              <name>onap/base_sdc-elasticsearch</name>
-              <alias>base_sdc-elasticsearch</alias>
-              <build>
-                <cleanup>true</cleanup>
-                <tags>
-                  <tag>${docker.tag}</tag>
-                  <tag>${docker.latest.tag}</tag>
-                </tags>
-                <dockerFileDir>${project.basedir}/base_sdc-elasticsearch</dockerFileDir>
-              </build>
-            </image>
+<!--            <image>-->
+<!--              <name>onap/base_sdc-elasticsearch</name>-->
+<!--              <alias>base_sdc-elasticsearch</alias>-->
+<!--              <build>-->
+<!--                <cleanup>true</cleanup>-->
+<!--                <tags>-->
+<!--                  <tag>${docker.tag}</tag>-->
+<!--                  <tag>${docker.latest.tag}</tag>-->
+<!--                </tags>-->
+<!--                <dockerFileDir>${project.basedir}/base_sdc-elasticsearch</dockerFileDir>-->
+<!--              </build>-->
+<!--            </image>-->
             <!--base_sdc-sanity-->
-            <image>
-              <name>onap/base_sdc-sanity</name>
-              <alias>base_sdc-sanity</alias>
-              <build>
-                <cleanup>true</cleanup>
-                <tags>
-                  <tag>${docker.tag}</tag>
-                  <tag>${docker.latest.tag}</tag>
-                </tags>
-                <dockerFileDir>${project.basedir}/base_sdc-sanity</dockerFileDir>
-              </build>
-            </image>
+<!--            <image>-->
+<!--              <name>onap/base_sdc-sanity</name>-->
+<!--              <alias>base_sdc-sanity</alias>-->
+<!--              <build>-->
+<!--                <cleanup>true</cleanup>-->
+<!--                <tags>-->
+<!--                  <tag>${docker.tag}</tag>-->
+<!--                  <tag>${docker.latest.tag}</tag>-->
+<!--                </tags>-->
+<!--                <dockerFileDir>${project.basedir}/base_sdc-sanity</dockerFileDir>-->
+<!--              </build>-->
+<!--            </image>-->
             <!--base_sdc-vnc-->
-            <image>
-              <name>onap/base_sdc-vnc</name>
-              <alias>base_sdc-vnc</alias>
-              <build>
-                <cleanup>true</cleanup>
-                <tags>
-                  <tag>${docker.tag}</tag>
-                  <tag>${docker.latest.tag}</tag>
-                </tags>
-                <dockerFileDir>${project.basedir}/base_sdc-vnc</dockerFileDir>
-              </build>
-            </image>
+<!--            <image>-->
+<!--              <name>onap/base_sdc-vnc</name>-->
+<!--              <alias>base_sdc-vnc</alias>-->
+<!--              <build>-->
+<!--                <cleanup>true</cleanup>-->
+<!--                <tags>-->
+<!--                  <tag>${docker.tag}</tag>-->
+<!--                  <tag>${docker.latest.tag}</tag>-->
+<!--                </tags>-->
+<!--                <dockerFileDir>${project.basedir}/base_sdc-vnc</dockerFileDir>-->
+<!--              </build>-->
+<!--            </image>-->
           </images>
         </configuration>
         <executions>
