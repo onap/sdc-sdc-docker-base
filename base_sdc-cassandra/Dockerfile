@@ -1,11 +1,13 @@
 FROM cassandra:3.11.4
 
-RUN # \
-    apt-get -y --no-install-recommends install \
+RUN mv /etc/apt/sources.list.d/cassandra.list /tmp && \
+    apt-get -o Acquire::Check-Valid-Until=false update && \
+    mv /tmp/cassandra.list /etc/apt/sources.list.d/cassandra.list
+RUN apt-get -y --no-install-recommends install \
       apt-transport-https \
       curl \
       wget && \
-    wget -q -O - https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add - && \
+    wget -q -O - https://www.apache.org/dist/cassandra/KEYS | apt-key add - && \
     apt-get -o Acquire::Check-Valid-Until=false update && \
     apt-get -y --no-install-recommends install \
       perl \
