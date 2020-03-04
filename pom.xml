@@ -87,19 +87,6 @@
                 <dockerFileDir>${project.basedir}/base_sdc-python</dockerFileDir>
               </build>
             </image>
-            <!--base_sdc-elasticsearch-->
-            <image>
-              <name>onap/base_sdc-elasticsearch</name>
-              <alias>base_sdc-elasticsearch</alias>
-              <build>
-                <cleanup>true</cleanup>
-                <tags>
-                  <tag>${docker.tag}</tag>
-                  <tag>${docker.latest.tag}</tag>
-                </tags>
-                <dockerFileDir>${project.basedir}/base_sdc-elasticsearch</dockerFileDir>
-              </build>
-            </image>
             <!--base_sdc-sanity-->
             <image>
               <name>onap/base_sdc-sanity</name>
@@ -138,7 +125,7 @@
             <configuration>
               <removeAll>true</removeAll>
               <image>
-                onap/base_sdc-jetty,onap/base_sdc-elasticsearch,onap/base_sdc-cassandra,onap/base_sdc-sanity,onap/base_sdc-cqlsh,onap/base_sdc-python,onap/base_sdc-vnc
+                onap/base_sdc-jetty,onap/base_sdc-cassandra,onap/base_sdc-sanity,onap/base_sdc-cqlsh,onap/base_sdc-python,onap/base_sdc-vnc
               </image>
             </configuration>
           </execution>
@@ -159,7 +146,7 @@
             </goals>
             <configuration>
               <image>
-                onap/base_sdc-jetty,onap/base_sdc-elasticsearch,onap/base_sdc-kibana,onap/base_sdc-cassandra,onap/base_sdc-sanity,onap/base_sdc-cqlsh,onap/base_sdc-python,onap/base_sdc-vnc
+                onap/base_sdc-jetty,onap/base_sdc-kibana,onap/base_sdc-cassandra,onap/base_sdc-sanity,onap/base_sdc-cqlsh,onap/base_sdc-python,onap/base_sdc-vnc
               </image>
             </configuration>
           </execution>
