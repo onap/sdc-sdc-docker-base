@@ -28,7 +28,6 @@ RUN apk update && \
         etc webrick \
         --no-document
 
+RUN addgroup -g 1000 sdc && adduser -S -u 1000 -G sdc -s /bin/sh sdc
 
-
-
-
+USER sdc
