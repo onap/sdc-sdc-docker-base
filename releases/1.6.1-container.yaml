@@ -1,0 +1,10 @@
+distribution_type: 'container'
+container_release_tag: '1.6.1'
+project: 'sdc-docker-base'
+log_dir: 'sdc-sdc-docker-base-maven-docker-stage-master/240/'
+ref: a6b20ce3648af25f1c4d4aad61503da6f861eda1
+containers:
+  - name: 'base_sdc-cqlsh'
+    version: '1.6.1-20200319T084430Z'
+  - name: 'base_sdc-python'
+    version: '1.6.1-20200319T084430Z'
