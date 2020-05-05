@@ -12,7 +12,7 @@ RUN apk update && \
         jq \
         libressl-dev \
         bash \
-        ruby=2.6.5-r2 \
+        ruby=2.6.6-r2 \
         ruby-dev \
         libffi-dev \
         libxml2-dev && \
