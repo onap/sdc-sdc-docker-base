@@ -1,0 +1,7 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+2: Ofir Sonsino <ofir.sonsino@intl.att.com>
+Submitted-by: Ofir Sonsino <ofir.sonsino@intl.att.com>
+Submitted-at: Wed, 06 May 2020 07:49:45 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/sdc/sdc-docker-base/+/107107
+Project: sdc/sdc-docker-base
+Branch: refs/heads/master
