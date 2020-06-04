@@ -1,4 +1,6 @@
-FROM python:2.7-alpine
+FROM nexus3.onap.org:10001/onap/integration-python:7.0.0
+
+USER root
 
 # Needed for pycurl
 ENV PYCURL_SSL_LIBRARY=openssl
@@ -10,24 +12,28 @@ RUN apk update && \
         libcurl \
         curl \
         jq \
-        libressl-dev \
         bash \
-        ruby=2.6.6-r2 \
+        ruby=2.6.6-r2 && \
+    apk add --no-cache --virtual .build-dependencies \
+        libressl-dev \
         ruby-dev \
         libffi-dev \
-        libxml2-dev && \
-    apk add --no-cache --virtual .build-dependencies \
+        libxml2-dev \
         build-base \
         curl-dev && \
-    pip install 'influxdb==5.0.0' 'pycurl==7.43.0.1' 'requests==2.18.4' &&  \
+    # needed libcurl to install correctly
+    pip install 'pycurl==7.43.0.1' &&  \
         set -ex && \
     gem install \
         chef:13.8.5 \
         berkshelf:6.3.1 \
         io-console:0.4.6 \
         etc webrick \
-        --no-document
+        --no-document && \
+    apk del .build-dependencies
 
-RUN addgroup -g 1000 sdc && adduser -S -u 1000 -G sdc -s /bin/sh sdc
+# user/group are the same as in integration/docker/onap-python base image
+ENV user=onap
+ENV group=onap
 
-USER sdc
+USER $user
