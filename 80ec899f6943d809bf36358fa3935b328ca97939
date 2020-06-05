@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a77d0fb_63c8928b",
+        "filename": "base_sdc-python/Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 2319
+      },
+      "writtenOn": "2020-06-05T15:04:06Z",
+      "side": 1,
+      "message": "do you really need curl (and then jq)?",
+      "revId": "80ec899f6943d809bf36358fa3935b328ca97939",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
