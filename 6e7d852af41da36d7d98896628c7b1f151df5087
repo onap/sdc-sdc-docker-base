@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1b6fb2a_82d554dc",
+        "filename": "base_sdc-python/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1215
+      },
+      "writtenOn": "2020-06-05T10:07:35Z",
+      "side": 1,
+      "message": "you need your the dev libraries at runtime?",
+      "revId": "6e7d852af41da36d7d98896628c7b1f151df5087",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abe2a44_43fb8614",
+        "filename": "base_sdc-python/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1215
+      },
+      "writtenOn": "2020-06-05T10:07:35Z",
+      "side": 1,
+      "message": "add\napk del .build-dependencies\nto save space",
+      "revId": "6e7d852af41da36d7d98896628c7b1f151df5087",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
