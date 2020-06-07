@@ -16,6 +16,29 @@
       "revId": "80ec899f6943d809bf36358fa3935b328ca97939",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c1fa8d5_54d0992f",
+        "filename": "base_sdc-python/Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2020-06-07T20:11:17Z",
+      "side": 1,
+      "message": "could be:\nENV user\u003donap group\u003donap\nor\nENV user\u003donap \n    group\u003donap\nLess docker layers.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "80ec899f6943d809bf36358fa3935b328ca97939",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
