@@ -44,6 +44,9 @@
                   <tag>${docker.tag}</tag>
                   <tag>${docker.latest.tag}</tag>
                 </tags>
+                <buildOptions>
+                  <labels>{"GIT_BRANCH":"${scmBranch}","GIT_COMMIT":"${buildNumber}"}</labels>
+                </buildOptions>
                 <dockerFileDir>${project.basedir}/base_sdc-jetty</dockerFileDir>
               </build>
             </image>
@@ -58,6 +61,9 @@
                   <tag>${docker.tag}</tag>
                   <tag>${docker.latest.tag}</tag>
                 </tags>
+                <buildOptions>
+                  <labels>{"GIT_BRANCH":"${scmBranch}","GIT_COMMIT":"${buildNumber}"}</labels>
+                </buildOptions>
                 <dockerFileDir>${project.basedir}/base_sdc-cassandra</dockerFileDir>
               </build>
             </image>
@@ -71,6 +77,9 @@
                   <tag>${docker.tag}</tag>
                   <tag>${docker.latest.tag}</tag>
                 </tags>
+                <buildOptions>
+                  <labels>{"GIT_BRANCH":"${scmBranch}","GIT_COMMIT":"${buildNumber}"}</labels>
+                </buildOptions>
                 <dockerFileDir>${project.basedir}/base_sdc-cqlsh</dockerFileDir>
               </build>
             </image>
@@ -84,6 +93,9 @@
                   <tag>${docker.tag}</tag>
                   <tag>${docker.latest.tag}</tag>
                 </tags>
+                <buildOptions>
+                  <labels>{"GIT_BRANCH":"${scmBranch}","GIT_COMMIT":"${buildNumber}"}</labels>
+                </buildOptions>
                 <dockerFileDir>${project.basedir}/base_sdc-python</dockerFileDir>
               </build>
             </image>
@@ -97,6 +109,9 @@
                   <tag>${docker.tag}</tag>
                   <tag>${docker.latest.tag}</tag>
                 </tags>
+                <buildOptions>
+                  <labels>{"GIT_BRANCH":"${scmBranch}","GIT_COMMIT":"${buildNumber}"}</labels>
+                </buildOptions>
                 <dockerFileDir>${project.basedir}/base_sdc-sanity</dockerFileDir>
               </build>
             </image>
@@ -110,6 +125,9 @@
                   <tag>${docker.tag}</tag>
                   <tag>${docker.latest.tag}</tag>
                 </tags>
+                <buildOptions>
+                  <labels>{"GIT_BRANCH":"${scmBranch}","GIT_COMMIT":"${buildNumber}"}</labels>
+                </buildOptions>
                 <dockerFileDir>${project.basedir}/base_sdc-vnc</dockerFileDir>
               </build>
             </image>
@@ -152,8 +170,75 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>buildnumber-maven-plugin</artifactId>
+        <version>1.4</version>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <id>gen-scm-info</id>
+            <goals>
+              <goal>create</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <doCheck>false</doCheck>
+          <shortRevisionLength>8</shortRevisionLength>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>gerrit-only</id>
+      <activation>
+        <property>
+          <name>GERRIT_BRANCH</name>
+        </property>
+      </activation>
+      <properties>
+        <scmBranch>${GERRIT_BRANCH}</scmBranch>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>buildnumber-maven-plugin</artifactId>
+            <version>1.4</version>
+            <executions>
+              <execution>
+                <id>gen-scm-info</id>
+                <phase>none</phase>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+              <execution>
+                <id>regex-property</id>
+                <goals>
+                  <goal>regex-property</goal>
+                </goals>
+                <configuration>
+                  <name>buildNumber</name>
+                  <value>${GERRIT_PATCHSET_REVISION}</value>
+                  <regex>.{0,32}$</regex>
+                  <replacement></replacement>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
   <repositories>
     <repository>
       <id>central</id>
