@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e97fc0f3_d42094ba",
+        "filename": "base_sdc-python/Dockerfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-06-12T13:30:43Z",
+      "side": 1,
+      "message": "Do we need to use specific image release instead of just latest? Or 7.0.0 here means \"frankfurt\" image release \u003d\u003d lastest stable?",
+      "range": {
+        "startLine": 1,
+        "startChar": 51,
+        "endLine": 1,
+        "endChar": 56
+      },
+      "revId": "43b0b6f3bf1254407cb3e53b4e866c64c2ab317b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
