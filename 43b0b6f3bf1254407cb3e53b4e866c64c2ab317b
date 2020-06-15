@@ -46,6 +46,30 @@
       "revId": "43b0b6f3bf1254407cb3e53b4e866c64c2ab317b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "620970ee_0688f575",
+        "filename": "base_sdc-python/Dockerfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1215
+      },
+      "writtenOn": "2020-06-15T07:12:47Z",
+      "side": 1,
+      "message": "7.0.0 is Guilin.. 7 \u003d seventh release\nIt was generated during Frankfurt to prepare Guilin but it is conformed to SECCOM expectations for Guilin",
+      "parentUuid": "bba2ed2d_cd1f0a3d",
+      "range": {
+        "startLine": 1,
+        "startChar": 51,
+        "endLine": 1,
+        "endChar": 56
+      },
+      "revId": "43b0b6f3bf1254407cb3e53b4e866c64c2ab317b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
