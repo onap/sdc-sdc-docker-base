@@ -1,0 +1,10 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Bartek Grzybowski <b.grzybowski@partner.samsung.com>
+Code-Review+1: Sylvain Desbureaux <sylvain.desbureaux@orange.com>
+Code-Review+2: Morgan Richomme <morgan.richomme@orange.com>
+Code-Review+2: Ofir Sonsino <ofir.sonsino@intl.att.com>
+Submitted-by: Ofir Sonsino <ofir.sonsino@intl.att.com>
+Submitted-at: Mon, 15 Jun 2020 07:45:09 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/sdc/sdc-docker-base/+/109088
+Project: sdc/sdc-docker-base
+Branch: refs/heads/master
