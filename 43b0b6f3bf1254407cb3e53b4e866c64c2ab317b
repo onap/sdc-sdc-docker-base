@@ -22,6 +22,30 @@
       "revId": "43b0b6f3bf1254407cb3e53b4e866c64c2ab317b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba2ed2d_cd1f0a3d",
+        "filename": "base_sdc-python/Dockerfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 2319
+      },
+      "writtenOn": "2020-06-15T06:39:02Z",
+      "side": 1,
+      "message": "Well 7.0.0 means the latest one as of today.\nUsing \"latest\" means that you have no control when some stuff are changed.\nIt will imply more often change of base image than before but it will be in a \"controlled\" way",
+      "parentUuid": "e97fc0f3_d42094ba",
+      "range": {
+        "startLine": 1,
+        "startChar": 51,
+        "endLine": 1,
+        "endChar": 56
+      },
+      "revId": "43b0b6f3bf1254407cb3e53b4e866c64c2ab317b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
