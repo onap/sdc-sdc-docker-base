@@ -1,0 +1,18 @@
+distribution_type: 'container'
+container_release_tag: '1.7.0'
+project: 'sdc-docker-base'
+log_dir: 'sdc-sdc-docker-base-maven-docker-stage-master/333/'
+ref: d0ec7287ed09da3b8d9feeb1e85042708ff3dac6
+containers:
+  - name: 'base_sdc-jetty'
+    version: '1.7.0-20200619T121144Z'
+  - name: 'base_sdc-cassandra'
+    version: '1.7.0-20200619T121144Z'
+  - name: 'base_sdc-cqlsh'
+    version: '1.7.0-20200619T121144Z'
+  - name: 'base_sdc-python'
+    version: '1.7.0-20200619T121144Z'
+  - name: 'base_sdc-sanity'
+    version: '1.7.0-20200619T121144Z'
+  - name: 'base_sdc-vnc'
+    version: '1.7.0-20200619T121144Z'
