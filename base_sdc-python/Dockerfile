@@ -21,7 +21,7 @@ RUN apk update && \
         build-base \
         curl-dev && \
     # needed libcurl to install correctly
-    pip install 'pycurl==7.43.0.1' &&  \
+    pip install --no-cache-dir 'pycurl==7.43.0.1' &&  \
         set -ex && \
     gem install \
         chef:13.8.5 \

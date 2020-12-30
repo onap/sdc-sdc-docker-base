@@ -8,12 +8,12 @@ RUN mkdir ~/.cassandra/ && \
 USER root
 
 RUN apk add --no-cache py-pip && \
-    pip install cqlsh==5.0.4 && \
+    pip install --no-cache-dir cqlsh==5.0.4 && \
     mkdir ~/.cassandra/ && \
     echo  '[cql]' > ~/.cassandra/cqlshrc  && \
     echo  'version=3.4.4' >> ~/.cassandra/cqlshrc  && \
     set -ex && \
-    pip install cqlsh && \
+    pip install --no-cache-dir cqlsh && \
     apk add --no-cache \
     bash \
     build-base \
