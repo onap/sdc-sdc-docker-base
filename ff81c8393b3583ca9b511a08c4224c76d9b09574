@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1e34542_d8e00836",
+        "filename": "base_sdc-python/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5562
+      },
+      "writtenOn": "2021-04-06T19:50:38Z",
+      "side": 1,
+      "message": "2.6.7 been released\nhttps://www.ruby-lang.org/en/news/2021/04/05/ruby-2-6-7-released/\nas well as 2.7.x too\nhttps://www.ruby-lang.org/en/downloads/releases/",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "ff81c8393b3583ca9b511a08c4224c76d9b09574",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
