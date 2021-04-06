@@ -12,7 +12,7 @@ RUN apk update && \
         libcurl \
         jq \
         bash \
-        ruby=2.6.6-r2 && \
+        ruby=2.6.6-r3 && \
     apk add --no-cache --virtual .build-dependencies \
         libressl-dev \
         ruby-dev \
