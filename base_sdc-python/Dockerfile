@@ -1,4 +1,4 @@
-FROM nexus3.onap.org:10001/onap/integration-python:7.0.0
+FROM nexus3.onap.org:10001/onap/integration-python:8.0.0
 
 USER root
 
@@ -12,7 +12,7 @@ RUN apk update && \
         libcurl \
         jq \
         bash \
-        ruby=2.6.6-r2 && \
+        ruby=2.7.2-r1 && \
     apk add --no-cache --virtual .build-dependencies \
         libressl-dev \
         ruby-dev \
