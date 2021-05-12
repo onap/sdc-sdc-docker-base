@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Vasyl Razinkov <vasyl.razinkov@est.tech>
+Code-Review+2: Christophe Closset <christophe.closset@intl.att.com>
+Submitted-by: Christophe Closset <christophe.closset@intl.att.com>
+Submitted-at: Wed, 12 May 2021 06:08:24 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/sdc/sdc-docker-base/+/121266
+Project: sdc/sdc-docker-base
+Branch: refs/heads/master
