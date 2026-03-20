@@ -1,0 +1,9 @@
+Verified+1: Kevin Sandi <ksandi@contractor.linuxfoundation.org>
+Code-Review+2: Matthew Watkins <mwatkins@linuxfoundation.org>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: ONAP Bypass GHA <releng+onap.bypass.gha@linuxfoundation.org>
+Submitted-by: Kevin Sandi <ksandi@contractor.linuxfoundation.org>
+Submitted-at: Fri, 20 Mar 2026 02:39:28 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/sdc/sdc-docker-base/+/143281
+Project: sdc/sdc-docker-base
+Branch: refs/heads/master
