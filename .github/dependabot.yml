@@ -13,3 +13,11 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    commit-message:
+      prefix: "CI(actions)"
+    # Wait before opening a bump PR so the repository does not churn on
+    # a release that gets retracted or superseded shortly after it
+    # ships.
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 15

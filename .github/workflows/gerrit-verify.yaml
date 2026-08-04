@@ -1,0 +1,209 @@
+---
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 The Linux Foundation
+
+# =============================================================================
+# Docker verify for the SDC base images.
+#
+# Every image under this repository builds from a per-image directory
+# (base_sdc-cassandra, base_sdc-cqlsh, base_sdc-jetty, base_sdc-python,
+# base_sdc-sanity, base_sdc-vnc). The reusable workflow discovers those
+# Dockerfiles, lints them with hadolint, builds each one, and produces an
+# SBOM and a Grype scan for the images that build.
+#
+# WHY BUILD FAILURES DO NOT BLOCK (build_permit_fail)
+#
+# The images pin a 2018-era toolchain that no longer resolves. A build of
+# every image on 2026-08-04, with unrestricted network access, produced:
+#
+#   base_sdc-cassandra  FAIL  Debian stretch archived; apt-get update 404s
+#   base_sdc-cqlsh      FAIL  openjdk:8-jdk-alpine withdrawn from Docker Hub
+#   base_sdc-jetty      FAIL  chef:13.8.5 pulls a bundler needing Ruby >=3.2,
+#                             the image ships Ruby 2.5
+#   base_sdc-python     FAIL  apk pin ruby=2.7.5-r0 unsatisfiable
+#   base_sdc-sanity     FAIL  openjdk:8-jdk-alpine withdrawn from Docker Hub
+#   base_sdc-vnc        PASS
+#
+# Gating on that would place a permanent Verified -1 on every change,
+# failing contributors for breakage that predates their work. The lane
+# therefore reports build results without blocking, while still gating on
+# the parts that do work today. Dockerfile lint needs no build and covers
+# all six images; base_sdc-vnc builds and reaches the SBOM and scan jobs.
+#
+# Remove build_permit_fail (and preferably build_permit_egress_traffic)
+# once the base images and pinned package versions move to maintained
+# releases. At that point this becomes a fully gating check.
+#
+# The build job runs harden-runner in audit mode
+# (build_permit_egress_traffic) because these Dockerfiles fetch from
+# Debian/Alpine mirrors, RubyGems, the Chef omnitruck CDN and
+# nexus3.onap.org; enumerating that set in the egress allow-list is not
+# practical. Every other job stays in block mode.
+#
+# DEPLOYMENT NOTES:
+#   * gerrit_to_platform discovers this caller by filename (contains both
+#     'gerrit' and 'verify') and dispatches it on patchset creation.
+#   * The file must exist on every active branch that should run the
+#     check; this change targets 'master' only.
+#   * GERRIT_DISABLED lets you run manually from the GitHub UI without
+#     Gerrit.
+#   * Requires repository variables GERRIT_SERVER, GERRIT_SSH_USER,
+#     GERRIT_KNOWN_HOSTS, GERRIT_URL and secret GERRIT_SSH_PRIVKEY.
+# =============================================================================
+name: 'Gerrit Verify (Docker)'
+
+# yamllint disable-line rule:truthy
+on:
+  workflow_dispatch:
+    inputs:
+      GERRIT_BRANCH:
+        description: 'Branch that change is against'
+        required: false
+        type: string
+        default: ''
+      GERRIT_CHANGE_ID:
+        description: 'The ID for the change'
+        required: false
+        type: string
+        default: ''
+      GERRIT_CHANGE_NUMBER:
+        description: 'The Gerrit number'
+        required: false
+        type: string
+        default: ''
+      GERRIT_CHANGE_URL:
+        description: 'URL to the change'
+        required: false
+        type: string
+        default: ''
+      GERRIT_EVENT_TYPE:
+        description: 'Type of Gerrit event'
+        required: false
+        type: string
+        default: ''
+      GERRIT_PATCHSET_NUMBER:
+        description: 'The patch number for the change'
+        required: false
+        type: string
+        default: ''
+      GERRIT_PATCHSET_REVISION:
+        description: 'The revision sha'
+        required: false
+        type: string
+        default: ''
+      GERRIT_PROJECT:
+        description: 'Project in Gerrit'
+        required: false
+        type: string
+        default: ''
+      GERRIT_REFSPEC:
+        description: 'Gerrit refspec of change'
+        required: false
+        type: string
+        default: ''
+      GERRIT_DISABLED:
+        description: 'Run without Gerrit components'
+        required: false
+        default: false
+        type: boolean
+
+concurrency:
+  group: ${{ github.event.inputs.GERRIT_CHANGE_ID || github.run_id }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  # Clear any previous Verified vote so the change starts from a clean state.
+  clear-vote:
+    if: inputs.GERRIT_DISABLED != true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - name: 'Harden runner'
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920  # v2.20.0
+        with:
+          egress-policy: audit
+      - name: 'Clear votes'
+        # yamllint disable-line rule:line-length
+        uses: lfreleng-actions/gerrit-review-action@a5de1d5bf17c2603ae81544dc2a455017b454ec8  # v1.1.1
+        with:
+          host: ${{ vars.GERRIT_SERVER }}
+          username: ${{ vars.GERRIT_SSH_USER }}
+          key: ${{ secrets.GERRIT_SSH_PRIVKEY }}
+          known_hosts: ${{ vars.GERRIT_KNOWN_HOSTS }}
+          gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          vote-type: clear
+      - name: 'Allow replication'
+        run: sleep 10s
+
+  # Call the reusable Docker build/test workflow. Image discovery finds
+  # the six per-image directories, so the lint job covers every
+  # Dockerfile whether or not it builds.
+  build-test:
+    needs: clear-vote
+    if: >-
+      always()
+      && (needs.clear-vote.result == 'success'
+          || needs.clear-vote.result == 'skipped')
+    permissions:
+      contents: read
+      pull-requests: read  # repository-metadata-action queries PR data
+    # yamllint disable-line rule:line-length
+    uses: lfreleng-actions/docker-workflows/.github/workflows/build-test.yaml@9f3aaa4e5e354b727033eb262e03874904afa614  # v0.1.1
+    with:
+      # When GERRIT_DISABLED is true the gerrit_* values are blanked so
+      # the reusable workflow falls back to a standard checkout.
+      # yamllint disable-line rule:line-length
+      gerrit_refspec: ${{ !inputs.GERRIT_DISABLED && inputs.GERRIT_REFSPEC || '' }}
+      # yamllint disable-line rule:line-length
+      gerrit_project: ${{ !inputs.GERRIT_DISABLED && inputs.GERRIT_PROJECT || '' }}
+      # yamllint disable-line rule:line-length
+      gerrit_branch: ${{ !inputs.GERRIT_DISABLED && inputs.GERRIT_BRANCH || '' }}
+      # gerrit_url falls back to the GERRIT_URL repository variable.
+      # Match the image names the Maven docker plugin produces
+      # (onap/base_sdc-*, see pom.xml).
+      image_namespace: 'onap'
+      # Six images, some with large bases; allow room beyond the default.
+      build_timeout_minutes: 45
+      # See the header: these Dockerfiles predate their upstreams.
+      build_permit_fail: true
+      build_permit_egress_traffic: true
+      # Supplementary checks: surface status without gating Gerrit.
+      audit_permit_fail: true
+      grype_permit_fail: true
+
+  # Report the overall workflow conclusion back to Gerrit as a Verified vote.
+  vote:
+    if: ${{ always() && inputs.GERRIT_DISABLED != true }}
+    needs: [clear-vote, build-test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # workflow-conclusion queries the Actions API to list run jobs
+      actions: read
+    timeout-minutes: 5
+    steps:
+      - name: 'Harden runner'
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920  # v2.20.0
+        with:
+          egress-policy: audit
+      - name: 'Get conclusion'
+        # yamllint disable-line rule:line-length
+        uses: im-open/workflow-conclusion@7b146947e59eaf7fc3328822357861ab1758c088  # v2.2.5
+      - name: 'Set vote'
+        # yamllint disable-line rule:line-length
+        uses: lfreleng-actions/gerrit-review-action@a5de1d5bf17c2603ae81544dc2a455017b454ec8  # v1.1.1
+        with:
+          host: ${{ vars.GERRIT_SERVER }}
+          username: ${{ vars.GERRIT_SSH_USER }}
+          key: ${{ secrets.GERRIT_SSH_PRIVKEY }}
+          known_hosts: ${{ vars.GERRIT_KNOWN_HOSTS }}
+          gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          vote-type: ${{ env.WORKFLOW_CONCLUSION }}
